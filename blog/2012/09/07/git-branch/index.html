@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>git-branch - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="git 的指令範例 git clone # git clone git@localhost:/tmp/git/project.git ./project
+Cloning into 'project'...
+root@localhost's password: remote: Counting &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yoursite.com/blog/2012/09/07/git-branch/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yoursite.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Git-branch</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-07T22:27:00+08:00" pubdate data-updated="true">Sep 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>git 的指令範例</h1>
+
+<h1>git clone</h1>
+
+<pre><code># git clone git@localhost:/tmp/git/project.git ./project
+Cloning into 'project'...
+root@localhost's password: 
+remote: Counting objects: 6526, done.
+remote: Compressing objects: 100% (4573/4573), done.
+remote: Total 6526 (delta 2437), reused 5182 (delta 1549)
+Receiving objects: 100% (6526/6526), 130.08 MiB | 10.37 MiB/s, done.
+Resolving deltas: 100% (2437/2437), done.
+</code></pre>
+
+<p><em>localhost 是 git server 的 IP 位置</em><br/>
+<em>/tmp/git/project.git 是 git repository 的 路徑位置</em></p>
+
+<h1>git add</h1>
+
+<pre><code># git add -A        // 將所有檔案都加入追蹤，包含刪除的檔案，新建的 ( untrack files )
+# git add .         // 將新的和修改的檔案都加入追蹤，但不包含刪除的檔案
+# git add -u        // 將有 track 的檔案都更新
+</code></pre>
+
+<h1>git branch</h1>
+
+<p>列出目前有那些 branch 以及目前在那個 branch， 參數 -a 表示同時列出遠端和本地的分支<br/>
+<em>* 表示目前所在的分支</em></p>
+
+<pre><code># git branch    
+* master
+  tmp1
+
+# git branch -a
+* master
+  tmp1
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/master
+
+# git branch &lt; *new\_branch\_name* &gt;                                // 建立本地 local branch
+# git branch -m &lt; *old\_branch\_name* &gt; &lt; *new\_branch\_name* &gt;     // 改名字 (如果有同名會失敗，改用 -M 可以強制覆蓋)                      
+# git branch -D &lt; *branch\_name* &gt;                                  // 刪除 local branch
+</code></pre>
+
+<p>git branch -D -r origin/&lt; <em>branch_name</em> >      // 刪除 remote branch，其中 -r 指遠端 -D 強制執行<br/>
+git push origin &#8211;delete &lt; <em>remote_branch</em> >   // 比較新版本的 git 才可以使用</p>
+
+<pre><code>[root@localhost repo]# git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/sample
+  remotes/origin/master
+
+[root@localhost repo]# git branch -r -D origin/sample
+Deleted remote branch origin/sample (was c0cbfd0).
+
+[root@localhost repo]# git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/master
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-07T22:27:00+08:00" pubdate data-updated="true">Sep 7<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>git</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yoursite.com/blog/2012/09/07/git-branch/" data-via="" data-counturl="http://yoursite.com/blog/2012/09/07/git-branch/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/04/install-octopress/" title="Previous Post: 紀錄安裝 octopress 過程">&laquo; 紀錄安裝 octopress 過程</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/24/memcache-install-guide/" title="Next Post: memcache_install_guide">memcache_install_guide &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/07/hello/">hello</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/24/memcache-install-guide2/">memcache 安裝紀錄 deamon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/24/memcache-install-guide/">memcache_install_guide</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/07/git-branch/">git-branch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/04/install-octopress/">紀錄安裝 octopress 過程</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

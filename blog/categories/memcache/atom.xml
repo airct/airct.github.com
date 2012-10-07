@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: memcache | My Octopress Blog]]></title>
+  <link href="http://yoursite.com/blog/categories/memcache/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2012-10-07T22:08:53+08:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[memcache 安裝紀錄 deamon]]></title>
+    <link href="http://yoursite.com/blog/2012/09/24/memcache-install-guide2/"/>
+    <updated>2012-09-24T02:57:00+08:00</updated>
+    <id>http://yoursite.com/blog/2012/09/24/memcache-install-guide2</id>
+    <content type="html"><![CDATA[<p>memcache vs memcached</p>
+
+<p>memcache memcached 都有 deamon 和 PHP Extension</p>
+
+<p>memcached 比較新，功能多</p>
+
+<p>Memcached Server install guide</p>
+
+<pre><code>$ yum install libevent              
+</code></pre>
+
+<ul>
+<li>會出錯 <a href="http://www.wangshun.org/?p=416">http://www.wangshun.org/?p=416</a> 所以不行!! 需要全部手動安裝 *</li>
+</ul>
+
+
+<p>確認一下安裝環境，相關參考官方網站<a href="http://memcached.org/">http://memcached.org/</a></p>
+
+<pre><code>$ uname -a                          
+Linux localhost.localdomain 2.6.18-128.el5 #1 SMP Wed Jan 21 10:44:23 EST 2009 i686 i686 i386 GNU/Linux
+
+$ wget http://memcached.googlecode.com/files/memcached-1.4.10.tar.gz    
+$ tar zxvf memcached-1.4.10.tar.gz 
+$ cd memcached-1.4.10
+$ ./configure
+# checking build system type... i686-pc-linux-gnu
+# checking host system type... i686-pc-linux-gnu
+# checking target system type... i686-pc-linux-gnu
+# checking for a BSD-compatible install... /usr/bin/install -c
+# checking whether build environment is sane... yes
+# checking for a thread-safe mkdir -p... /bin/mkdir -p
+# checking for gawk... gawk
+# checking whether make sets $(MAKE)... yes
+# checking for gcc... gcc
+# checking whether the C compiler works... yes
+# checking for C compiler default output file name... a.out
+# checking for suffix of executables... 
+# checking whether we are cross compiling... no
+# checking for suffix of object files... o
+# checking whether we are using the GNU C compiler... yes
+# checking whether gcc accepts -g... yes
+# checking for gcc option to accept ISO C89... none needed
+# checking for style of include used by make... GNU
+# checking dependency style of gcc... gcc3
+# checking how to run the C preprocessor... gcc -E
+# checking for grep that handles long lines and -e... /bin/grep
+# checking for egrep... /bin/grep -E
+# checking for icc in use... no
+# checking for ANSI C header files... yes
+# checking for sys/types.h... yes
+# checking for sys/stat.h... yes
+# checking for stdlib.h... yes
+# checking for string.h... yes
+# checking for memory.h... yes
+# checking for strings.h... yes
+# checking for inttypes.h... yes
+# checking for stdint.h... yes
+# checking for unistd.h... yes
+# checking whether __SUNPRO_C is declared... no
+# checking for gcc option to accept ISO C99... -std=gnu99
+# checking whether gcc -std=gnu99 and cc understand -c and -o together... yes
+# checking sasl/sasl.h usability... no
+# checking sasl/sasl.h presence... no
+# checking for sasl/sasl.h... no
+# checking for gcov... /usr/bin/gcov
+# checking for main in -lgcov... yes
+# checking for library containing clock_gettime... -lrt
+# checking for library containing socket... none required
+# checking for library containing gethostbyname... none required
+# checking for libevent directory... configure: error: libevent is required.  You can get it from http://www.monkey.org/~provos/libevent/
+
+# If it's already installed, specify its path using --with-libevent=/dir/
+</code></pre>
+
+<p>上面叭啦叭啦一堆，跟你說 libevent 沒有! 硍! yum install libevent 沒屁用!
+直接從訊息說的網址抓 <a href="http://www.monkey.org/~provos/libevent/">http://www.monkey.org/~provos/libevent/</a></p>
+
+<p>相關參考 官網 : <a href="http://www.monkey.org/~provos/libevent/">http://www.monkey.org/~provos/libevent/</a></p>
+
+<pre><code>$ cd ..
+$ wget https://github.com/downloads/libevent/libevent/libevent-2.0.16-stable.tar.gz
+$ ./configure --prefix=/usr
+$ make
+$ make install
+</code></pre>
+
+<p>然後出現下面的安裝完畢說明</p>
+
+<pre><code>Libraries have been installed in:
+   /usr/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+</code></pre>
+
+<p>最後當然要檢查一下裝到了沒</p>
+
+<pre><code>$ ls -al /usr/lib | grep libevent
+
+    # lrwxrwxrwx   1 root root       21 Nov 26 00:38 libevent-2.0.so.5 -&gt; libevent-2.0.so.5.1.4
+    # -rwxr-xr-x   1 root root   762242 Nov 26 00:38 libevent-2.0.so.5.1.4
+    # -rw-r--r--   1 root root   990968 Nov 26 00:38 libevent.a
+    # lrwxrwxrwx   1 root root       26 Nov 26 00:38 libevent_core-2.0.so.5 -&gt; libevent_core-2.0.so.5.1.4
+    # -rwxr-xr-x   1 root root   453822 Nov 26 00:38 libevent_core-2.0.so.5.1.4
+    # -rw-r--r--   1 root root   607858 Nov 26 00:38 libevent_core.a
+    # -rwxr-xr-x   1 root root      968 Nov 26 00:38 libevent_core.la
+    # lrwxrwxrwx   1 root root       26 Nov 26 00:38 libevent_core.so -&gt; libevent_core-2.0.so.5.1.4
+    # lrwxrwxrwx   1 root root       27 Nov 26 00:38 libevent_extra-2.0.so.5 -&gt; libevent_extra-2.0.so.5.1.4
+    # -rwxr-xr-x   1 root root   322768 Nov 26 00:38 libevent_extra-2.0.so.5.1.4
+    # -rw-r--r--   1 root root   383182 Nov 26 00:38 libevent_extra.a
+    # -rwxr-xr-x   1 root root      975 Nov 26 00:38 libevent_extra.la
+    # lrwxrwxrwx   1 root root       27 Nov 26 00:38 libevent_extra.so -&gt; libevent_extra-2.0.so.5.1.4
+    # -rwxr-xr-x   1 root root      933 Nov 26 00:38 libevent.la
+    # lrwxrwxrwx   1 root root       29 Nov 26 00:38 libevent_openssl-2.0.so.5 -&gt; libevent_openssl-2.0.so.5.1.4
+    # -rwxr-xr-x   1 root root    70919 Nov 26 00:38 libevent_openssl-2.0.so.5.1.4
+    # -rw-r--r--   1 root root    79220 Nov 26 00:38 libevent_openssl.a
+    # -rwxr-xr-x   1 root root     1004 Nov 26 00:38 libevent_openssl.la
+    # lrwxrwxrwx   1 root root       29 Nov 26 00:38 libevent_openssl.so -&gt; libevent_openssl-2.0.so.5.1.4
+    # lrwxrwxrwx   1 root root       30 Nov 26 00:38 libevent_pthreads-2.0.so.5 -&gt; libevent_pthreads-2.0.so.5.1.4
+    # -rwxr-xr-x   1 root root    14289 Nov 26 00:38 libevent_pthreads-2.0.so.5.1.4
+    # -rw-r--r--   1 root root    11814 Nov 26 00:38 libevent_pthreads.a
+    # -rwxr-xr-x   1 root root      996 Nov 26 00:38 libevent_pthreads.la
+    # lrwxrwxrwx   1 root root       30 Nov 26 00:38 libevent_pthreads.so -&gt; libevent_pthreads-2.0.so.5.1.4
+    # lrwxrwxrwx   1 root root       21 Nov 26 00:38 libevent.so -&gt; libevent-2.0.so.5.1.4
+</code></pre>
+
+<p>切換到 memcached 資料夾，繼續之前的步驟</p>
+
+<pre><code>$ cd memcached-1.4.10                   
+$ ./configure                           // 一樣一堆checking for XXXX 之後，沒有錯誤啦!!
+$ make
+$ make install
+$ ls -al /usr/local/bin/mem*            // 檢查一下裝到了沒
+
+$ /usr/local/bin/memcached -d -m 10 -u root -l 172.16.1.46 -p 11211         
+    -- another way
+    -- $ /usr/local/bin/memcached -d -m 10 -u root -l 192.168.0.200 -p 12000 -c 256 -P /tmp/memcached.pid
+    -- -d 背景服務
+    -- -m 是分配 Memcache 使用的記憶體容量，單位是MB
+    -- -u 
+    -- -l 是設定 Memcached 監聽的 ip 位置
+    -- -p 是設定 Memcached 監聽的 port
+    -- -c 是最大同時進行的連接數量，預設是1024
+    -- -P 
+</code></pre>
+
+<p>另外的安裝方式，超爽的方式，怎麼 CentOS 5.3 沒有
+<a href="http://www.webdeveloperjuice.com/2010/01/25/10-baby-steps-to-install-memcached-server-and-access-it-with-php/">http://www.webdeveloperjuice.com/2010/01/25/10-baby-steps-to-install-memcached-server-and-access-it-with-php/</a></p>
+
+<p>Step1: Install libevent ,libmemcached and libmemcached devel (dependency)</p>
+
+<pre><code>$ yum install libevent
+$ yum install libmemcached libmemcached-devel
+</code></pre>
+
+<p>Step 2: Install Memcached Server</p>
+
+<pre><code>$ yum install memcached
+</code></pre>
+
+<p>Step 3: Start Memcached server</p>
+
+<pre><code>$ memcached -d -m 512 -l 127.0.0.1 -p 11211 -u nobody
+</code></pre>
+
+<p><em>d = daemon, m = memory(MB), u = user, l = IP to listen to, p = port</em></p>
+
+<p>Step 4: Check your memcached server is running successfully</p>
+
+<pre><code>$ ps -eaf | grep memcached
+</code></pre>
+
+<p>Step 5: Connect Memcached server via telnet</p>
+
+<pre><code>$ telnet 127.0.0.1 11211
+</code></pre>
+
+<p>Step 6: Check current status of Memcached Server on telnet prompt</p>
+
+<pre><code>$ stats
+</code></pre>
+
+<p>Step 7: Exit telnet</p>
+
+<pre><code>$ quit
+</code></pre>
+
+<p>Step 8: Install PHP client to access Memcached Server</p>
+
+<pre><code>$ pecl install memcache
+</code></pre>
+
+<p>It will make “memcache.so”, you have to just put it on your /etc/php.ini file.</p>
+
+<p>Step 9: Restart your apache server</p>
+
+<pre><code>$ service httpd restart
+</code></pre>
+
+<p>最後PHP memcache 程式碼範例</p>
+
+<pre><code>[http://www.php.net/manual/en/memcache.set.php](http://www.php.net/manual/en/memcache.set.php)
+</code></pre>
+
+<p>最後相關參考</p>
+
+<p>http://www.webdeveloperjuice.com/2010/01/25/10-baby-steps-to-install-memcached-server-and-access-it-with-php/
+http://www.ccvita.com/257.html
+http://lwfirst.blogspot.com/2011/02/php-memcache.html</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[memcache_install_guide]]></title>
+    <link href="http://yoursite.com/blog/2012/09/24/memcache-install-guide/"/>
+    <updated>2012-09-24T02:57:00+08:00</updated>
+    <id>http://yoursite.com/blog/2012/09/24/memcache-install-guide</id>
+    <content type="html"><![CDATA[<p>memcache vs memcached</p>
+
+<p>memcache memcached 都有 deamon 和 PHP Extension</p>
+
+<p>memcached 比較新，功能多</p>
+
+<p>memcache Extension 安裝方式</p>
+
+<pre><code>$ wget http://pecl.php.net/get/memcache-2.2.4.tgz
+$ tar -zxvf memcached-2.2.4.tgz
+$ cd memcached-2.2.4
+$ phpize &amp;&amp; ./configure --enable-memcache &amp;&amp; make
+$ cp modules/memcache.so /usr/lib/php/modules/
+
+$ vi /etc/php.ini
+</code></pre>
+
+<p>關於 extension 的附近會看到下方的說明，這是新版的 php 已經改成如此 ( linux )</p>
+
+<p><em>Note: packaged extension modules are now loaded via the .ini files</em>
+<em>found in the directory /etc/php.d</em></p>
+
+<pre><code>$ touch /etc/php.d/memcache.ini
+</code></pre>
+
+<p><em>$ echo 'extension=memcache.so' > /etc/php.d/memcache.ini 如果不自行編 memcache.ini 的情況下，此行可以忽略</em></p>
+
+<pre><code>$ vi /etc/php.d/memcache.ini
+</code></pre>
+
+<p>貼上下方設定，主要是 <em>extension=memcache.so</em> 這行其他都是註解，方便以後修改。</p>
+
+<pre><code>; Enable memcache extension module
+extension=memcache.so
+
+; Options for the memcache module
+
+; Whether to transparently failover to other servers on errors
+;memcache.allow_failover=1
+; Defines how many servers to try when setting and getting data.
+;memcache.max_failover_attempts=20
+; Data will be transferred in chunks of this size
+;memcache.chunk_size=8192
+; The default TCP port number to use when connecting to the memcached server
+;memcache.default_port=11211
+; Hash function {crc32, fnv}
+;memcache.hash_function=crc32
+; Hash strategy {standard, consistent}
+;memcache.hash_strategy=standard
+
+; Options to use the memcache session handler
+
+; Use memcache as a session handler
+;session.save_handler=memcache
+; Defines a comma separated of server urls to use for session storage
+;session.save_path="tcp://localhost:11211?persistent=1&amp;weight=1&amp;timeout=1&amp;retry_interval=15"
+</code></pre>
+
+<p>最後當然一定要</p>
+
+<pre><code>$ service httpd restart
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

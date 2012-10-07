@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>紀錄安裝 octopress 過程 - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="這篇主要紀錄安裝 octopress 過程 Install Git.
+Install rbenv or RVM.
+Install DevKit. 安裝 Octopress # git clone git://github.com/imathis/octopress.git octopress
+# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yoursite.com/blog/2012/09/04/install-octopress/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yoursite.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">紀錄安裝 Octopress 過程</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-04T12:28:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>這篇主要紀錄安裝 octopress 過程</p>
+
+<ul>
+<li>Install <a href="http://git-scm.com/">Git</a>.</li>
+<li>Install rbenv or <a href="http://rubyinstaller.org/downloads/">RVM</a>.</li>
+<li>Install <a href="http://rubyinstaller.org/downloads/">DevKit</a>.</li>
+</ul>
+
+
+<h1>安裝 Octopress</h1>
+
+<pre><code># git clone git://github.com/imathis/octopress.git octopress
+# cd octopress    # If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).
+</code></pre>
+
+<p>在 Ootopress 的目錄底下安裝 ， 但是 window 中如果是使用 git bash 有可能會出現 PATH 問題。</p>
+
+<pre><code># gem install bundler
+Fetching: bundler-1.2.0.gem (100%)
+Successfully installed bundler-1.2.0
+1 gem installed
+Installing ri documentation for bundler-1.2.0...
+Installing RDoc documentation for bundler-1.2.0...
+</code></pre>
+
+<p>然後</p>
+
+<pre><code># bundle install  // 這裡在 windows 環境下出錯 ， google 之後需要安裝 DevKit
+Fetching gem metadata from http://rubygems.org/.......
+Using rake (0.9.2.2)
+Using RedCloth (4.2.9)
+Installing posix-spawn (0.3.6)
+Gem::InstallError: The 'posix-spawn' native gem requires installed build tools.
+
+Please update your PATH to include build tools or download the DevKit
+from 'http://rubyinstaller.org/downloads' and follow the instructions
+at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'
+An error occurred while installing posix-spawn (0.3.6), and Bundler cannot continue.
+Make sure that `gem install posix-spawn -v '0.3.6'` succeeds before bundling.
+</code></pre>
+
+<p>發生錯誤訊息，表示需要先把 gem install posix-spawn -v &#8216;0.3.6&#8217; 安裝成功能才繼續 ， 接著先切換到 DevKit 資料夾下
+照著  <a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit">參考</a>  開始安裝 DevKit</p>
+
+<pre><code># cd C:\Download\Devkit
+# ruby dk.rb init
+[INFO] found RubyInstaller v1.9.3 at C:/Ruby193
+
+Initialization complete! Please review and modify the auto-generated
+'config.yml' file to ensure it contains the root directories to all
+of the installed Rubies you want enhanced by the DevKit.
+
+
+# ruby dk.rb review
+Based upon the settings in the 'config.yml' file generated
+from running 'ruby dk.rb init' and any of your customizations,
+DevKit functionality will be injected into the following Rubies
+when you run 'ruby dk.rb install'.
+
+C:/Ruby193
+
+
+# ruby dk.rb install
+[INFO] Updating convenience notice gem override for 'C:/Ruby193'
+[INFO] Installing 'C:/Ruby193/lib/ruby/site_ruby/devkit.rb'
+</code></pre>
+
+<p>最後切回 Octopress 目錄後再執行一次</p>
+
+<pre><code># bundle install
+Fetching gem metadata from http://rubygems.org/.......
+Using rake (0.9.2.2)
+Using RedCloth (4.2.9)
+Installing posix-spawn (0.3.6) with native extensions
+Installing albino (1.3.3)
+Installing blankslate (2.1.2.4)
+Installing chunky_png (1.2.5)
+Installing fast-stemmer (1.0.1) with native extensions
+Installing classifier (1.3.3)
+Installing fssm (0.2.9)
+Installing sass (3.1.20)
+Installing compass (0.12.2)
+Installing directory_watcher (1.4.1)
+Installing ffi (1.0.11) with native extensions
+Installing haml (3.1.6)
+Installing kramdown (0.13.7)
+Installing liquid (2.3.0)
+Installing syntax (1.0.0)
+Installing maruku (0.6.0)
+Installing jekyll (0.11.2)
+Installing rubypython (0.5.3)
+Installing pygments.rb (0.2.13)
+Installing rack (1.4.1)
+Installing rack-protection (1.2.0)
+Installing rb-fsevent (0.9.1)
+Installing rdiscount (1.6.8) with native extensions
+Installing rubypants (0.2.0)
+Installing tilt (1.3.3)
+Installing sinatra (1.3.2)
+Installing stringex (1.4.0)
+Using bundler (1.2.0)
+Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem
+is installed.
+</code></pre>
+
+<p>最後</p>
+
+<pre><code># ruby --version  // 應該會是 Ruby 1.9.3 
+ruby 1.9.3p194 (2012-04-20) [i386-mingw32]
+
+
+# rake install
+## Copying classic theme into ./source and ./sass
+mkdir -p source
+cp -r .themes/classic/source/. source
+mkdir -p sass
+cp -r .themes/classic/sass/. sass
+mkdir -p source/_posts
+mkdir -p public
+</code></pre>
+
+<p>參考資訊</p>
+
+<p>http://octopress.org/docs/setup/</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-04T12:28:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yoursite.com/blog/2012/09/04/install-octopress/" data-via="" data-counturl="http://yoursite.com/blog/2012/09/04/install-octopress/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/04/fix-lang-zh/" title="Previous Post: 解決 Octopress 文章內出現中文的時 Rake Generate 的錯誤">&laquo; 解決 Octopress 文章內出現中文的時 Rake Generate 的錯誤</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/07/git-branch/" title="Next Post: git-branch">git-branch &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/07/hello/">hello</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/24/memcache-install-guide2/">memcache 安裝紀錄 deamon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/24/memcache-install-guide/">memcache_install_guide</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/07/git-branch/">git-branch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/04/install-octopress/">紀錄安裝 octopress 過程</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
