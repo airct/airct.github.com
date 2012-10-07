@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: linux | My Octopress Blog]]></title>
-  <link href="http://yoursite.com/blog/categories/linux/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2012-10-07T22:08:53+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://airct.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://airct.github.com/"/>
+  <updated>2012-10-07T22:18:44+08:00</updated>
+  <id>http://airct.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[memcache 安裝紀錄 deamon]]></title>
-    <link href="http://yoursite.com/blog/2012/09/24/memcache-install-guide2/"/>
+    <link href="http://airct.github.com/blog/2012/09/24/memcache-install-guide2/"/>
     <updated>2012-09-24T02:57:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/24/memcache-install-guide2</id>
+    <id>http://airct.github.com/blog/2012/09/24/memcache-install-guide2</id>
     <content type="html"><![CDATA[<p>memcache vs memcached</p>
 
 <p>memcache memcached 都有 deamon 和 PHP Extension</p>
@@ -244,9 +244,9 @@ http://lwfirst.blogspot.com/2011/02/php-memcache.html</p>
   
   <entry>
     <title type="html"><![CDATA[memcache_install_guide]]></title>
-    <link href="http://yoursite.com/blog/2012/09/24/memcache-install-guide/"/>
+    <link href="http://airct.github.com/blog/2012/09/24/memcache-install-guide/"/>
     <updated>2012-09-24T02:57:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/24/memcache-install-guide</id>
+    <id>http://airct.github.com/blog/2012/09/24/memcache-install-guide</id>
     <content type="html"><![CDATA[<p>memcache vs memcached</p>
 
 <p>memcache memcached 都有 deamon 和 PHP Extension</p>

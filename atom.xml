@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2012-10-07T22:08:53+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://airct.github.com/atom.xml" rel="self"/>
+  <link href="http://airct.github.com/"/>
+  <updated>2012-10-07T22:18:44+08:00</updated>
+  <id>http://airct.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
     
@@ -15,18 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[hello]]></title>
-    <link href="http://yoursite.com/blog/2012/10/07/hello/"/>
+    <link href="http://airct.github.com/blog/2012/10/07/hello/"/>
     <updated>2012-10-07T22:06:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/10/07/hello</id>
+    <id>http://airct.github.com/blog/2012/10/07/hello</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[memcache 安裝紀錄 deamon]]></title>
-    <link href="http://yoursite.com/blog/2012/09/24/memcache-install-guide2/"/>
+    <link href="http://airct.github.com/blog/2012/09/24/memcache-install-guide2/"/>
     <updated>2012-09-24T02:57:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/24/memcache-install-guide2</id>
+    <id>http://airct.github.com/blog/2012/09/24/memcache-install-guide2</id>
     <content type="html"><![CDATA[<p>memcache vs memcached</p>
 
 <p>memcache memcached 都有 deamon 和 PHP Extension</p>
@@ -253,9 +253,9 @@ http://lwfirst.blogspot.com/2011/02/php-memcache.html</p>
   
   <entry>
     <title type="html"><![CDATA[memcache_install_guide]]></title>
-    <link href="http://yoursite.com/blog/2012/09/24/memcache-install-guide/"/>
+    <link href="http://airct.github.com/blog/2012/09/24/memcache-install-guide/"/>
     <updated>2012-09-24T02:57:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/24/memcache-install-guide</id>
+    <id>http://airct.github.com/blog/2012/09/24/memcache-install-guide</id>
     <content type="html"><![CDATA[<p>memcache vs memcached</p>
 
 <p>memcache memcached 都有 deamon 和 PHP Extension</p>
@@ -323,9 +323,9 @@ extension=memcache.so
   
   <entry>
     <title type="html"><![CDATA[git-branch]]></title>
-    <link href="http://yoursite.com/blog/2012/09/07/git-branch/"/>
+    <link href="http://airct.github.com/blog/2012/09/07/git-branch/"/>
     <updated>2012-09-07T22:27:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/07/git-branch</id>
+    <id>http://airct.github.com/blog/2012/09/07/git-branch</id>
     <content type="html"><![CDATA[<h1>git 的指令範例</h1>
 
 <h1>git clone</h1>
@@ -392,9 +392,9 @@ Deleted remote branch origin/sample (was c0cbfd0).
   
   <entry>
     <title type="html"><![CDATA[紀錄安裝 octopress 過程]]></title>
-    <link href="http://yoursite.com/blog/2012/09/04/install-octopress/"/>
+    <link href="http://airct.github.com/blog/2012/09/04/install-octopress/"/>
     <updated>2012-09-04T12:28:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/04/install-octopress</id>
+    <id>http://airct.github.com/blog/2012/09/04/install-octopress</id>
     <content type="html"><![CDATA[<p>這篇主要紀錄安裝 octopress 過程</p>
 
 <ul>
@@ -524,9 +524,9 @@ mkdir -p public
   
   <entry>
     <title type="html"><![CDATA[解決 Octopress 文章內出現中文的時 Rake Generate 的錯誤]]></title>
-    <link href="http://yoursite.com/blog/2012/09/04/fix-lang-zh/"/>
+    <link href="http://airct.github.com/blog/2012/09/04/fix-lang-zh/"/>
     <updated>2012-09-04T12:07:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/09/04/fix-lang-zh</id>
+    <id>http://airct.github.com/blog/2012/09/04/fix-lang-zh</id>
     <content type="html"><![CDATA[<p>Octopress 剛安裝好，如果使用中文 <strong>rake generate</strong> 會出錯。 google 後的 解決方案</p>
 
 <p>修改檔案 C:\Ruby193\lib\ruby\gems\1.9.1\gems\jekyll-0.11.0\lib\jekyll\convertible.rb 將原本的</p>
