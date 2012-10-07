@@ -44,13 +44,15 @@ categories: [git]
   	  remotes/origin/HEAD -> origin/master
       remotes/origin/master
 
-	# git branch < *new\_branch\_name* >								// 建立本地 local branch
-	# git branch -m < *old\_branch\_name* > < *new\_branch\_name* >		// 改名字 (如果有同名會失敗，改用 -M 可以強制覆蓋)						
-    # git branch -D < *branch\_name* > 									// 刪除 local branch
 
 
-git branch -D -r origin/< *branch\_name* >		// 刪除 remote branch，其中 -r 指遠端 -D 強制執行  
-git push origin --delete < *remote\_branch* >	// 比較新版本的 git 才可以使用
+	# git branch [new_branch_name]							// 建立本地 local branch
+	# git branch -m [old_branch_name] [new_branch_name]		// 改名字 (如果有同名會失敗，改用 -M 可以強制覆蓋)						
+    # git branch -D [branch_name] 								// 刪除 local branch
+
+
+git branch -D -r origin/[branch_name]		// 刪除 remote branch，其中 -r 指遠端 -D 強制執行  
+git push origin --delete [remote_branch]		// 比較新版本的 git 才可以使用
 	
 	[root@localhost repo]# git branch -a
 	* master
