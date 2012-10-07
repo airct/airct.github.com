@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://airct.github.com/atom.xml" rel="self"/>
   <link href="http://airct.github.com/"/>
-  <updated>2012-10-07T22:18:44+08:00</updated>
+  <updated>2012-10-07T22:28:10+08:00</updated>
   <id>http://airct.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -365,13 +365,15 @@ Resolving deltas: 100% (2437/2437), done.
   remotes/origin/HEAD -&gt; origin/master
   remotes/origin/master
 
-# git branch &lt; *new\_branch\_name* &gt;                                // 建立本地 local branch
-# git branch -m &lt; *old\_branch\_name* &gt; &lt; *new\_branch\_name* &gt;     // 改名字 (如果有同名會失敗，改用 -M 可以強制覆蓋)                      
-# git branch -D &lt; *branch\_name* &gt;                                  // 刪除 local branch
+
+
+# git branch [new_branch_name]                          // 建立本地 local branch
+# git branch -m [old_branch_name] [new_branch_name]     // 改名字 (如果有同名會失敗，改用 -M 可以強制覆蓋)                      
+# git branch -D [branch_name]                               // 刪除 local branch
 </code></pre>
 
-<p>git branch -D -r origin/&lt; <em>branch_name</em> >      // 刪除 remote branch，其中 -r 指遠端 -D 強制執行<br/>
-git push origin &#8211;delete &lt; <em>remote_branch</em> >   // 比較新版本的 git 才可以使用</p>
+<p>git branch -D -r origin/[branch_name]       // 刪除 remote branch，其中 -r 指遠端 -D 強制執行<br/>
+git push origin &#8211;delete [remote_branch]        // 比較新版本的 git 才可以使用</p>
 
 <pre><code>[root@localhost repo]# git branch -a
 * master
